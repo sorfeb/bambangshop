@@ -7,8 +7,6 @@ use crate::model::product::Product;
 use crate::model::subscriber::{self, Subscriber};
 use crate::repository::subscriber::SubscriberRepository;
 
-use super::product;
-
 pub struct NotificationService;
 
 impl NotificationService {
