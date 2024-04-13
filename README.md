@@ -62,7 +62,7 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [x] Commit: `Implement subscribe function in Notification service.`
     -   [x] Commit: `Implement subscribe function in Notification controller.`
     -   [x] Commit: `Implement unsubscribe function in Notification service.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification controller.`
+    -   [x] Commit: `Implement unsubscribe function in Notification controller.`
     -   [ ] Write answers of your learning module's "Reflection Publisher-2" questions in this README.
 -   **STAGE 3: Implement notification mechanism**
     -   [ ] Commit: `Implement update method in Subscriber model to send notification HTTP requests.`
@@ -81,12 +81,20 @@ This is the place for you to write reflections:
 > A single Model `struct` is enough f your application has a straightforward use case where there's only one type of observer and its behavior is relatively simple, but using interfaces improves the compliance to **“Open-Closed Principle”** ,where the code will be easy to extend without any modifications to existing code.
 
 
-2. `id` in `Product` and `url` in `Subscriber` is intended to be unique. Explain based on your understanding, is using `Vec` (list) sufficient or using `DashMap` (map/dictionary) like we currently use is necessary for this case?
+2. `id` in `Program` and `url` in `Subscriber` is intended to be unique. Explain based on your understanding, is using `Vec` (list) sufficient or using `DashMap` (map/dictionary) like we currently use is necessary for this case?
 > Using `Vec` could be sufficient if we aren't utilizing multithreading (simple program). But if we need concurrency with a large user database, using `Vec` is insufficient.
 
 3. When programming using Rust, we are enforced by rigorous compiler constraints to make a thread-safe program. In the case of the List of Subscribers (`SUBSCRIBERS`) static variable, we used the `DashMap` external library for thread safe HashMap. Explain based on your understanding of design patterns, do we still need DashMap or we can implement Singleton pattern instead?
 > It is not recommended to implement Singleton pattern instead because BambangShop is intended to be a multithreaded application that applies concuncerrncy, so thread safety needs to be implemented.
 
 #### Reflection Publisher-2
+1. In the Model-View Controller (MVC) compound pattern, there is no “Service” and “Repository”. Model in MVC covers both data storage and business logic. Explain based on your understanding of design principles, why we need to separate “Service” and “Repository” from a Model?
+> According to the **Single Responsibility Principle (SRP)**, it states that a class should have only one reason to change. By separating concerns such as business logic, data access, and data storage  into different components, each component can focus on a single responsibility. This makes the codebase easier to understand, maintain, and extend.
+
+2. What happens if we only use the Model? Explain your imagination on how the interactions between each model (`Product`, `Subscriber`, `Notification`) affect the code complexity for each model?
+> The interactions between each model will lead to increased code complexity and more difficult to maintain because it must handle data access and business logic, resulting in more possibilites of bugs.
+
+3. Have you explored more about Postman? Tell us how this tool helps you to test your current work. You might want to also list which features in Postman you are interested in or feel like it is helpful to help your Group Project or any of your future software engineering projects.
+> Postman helps me with API Testing on my current work to check and test **HTTP requests** (`GET`, `POST`, `PUT`, `DELETE`, etc.) sent and received by the user to the API endpoints. It also offers a feature called **Collections** that is useful to save requests that I can organize and manage that usually consists of related requests, making it easier to organize and execute tests for different parts of the API. 
 
 #### Reflection Publisher-3
